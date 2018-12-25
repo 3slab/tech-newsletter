@@ -1,0 +1,63 @@
+$primary-color: #0b1183;
+$secondary-color: #444abd;
+
+// Body Styles
+body,
+html,
+.body {
+  background: #f3f3f3 !important;
+}
+
+.container.header {
+  background: #f3f3f3;
+}
+
+.body-drip {
+  border-top: 8px solid #663399;
+}
+
+// Full Width Headers
+.header {
+  background: $light-gray;
+}
+
+.header .columns {
+  padding-bottom: 0;
+}
+
+.header p {
+  color: $primary-color;
+  padding-top: 15px;
+}
+
+.header .wrapper-inner {
+  padding: 20px;
+}
+
+.header .container {
+  background: transparent;
+}
+
+.footer {
+  font-style: italic;
+}
+
+a {
+  color: $primary-color;
+
+  &:hover,&:visited {
+    color: $secondary-color;
+  }
+}
+
+// Articles
+.article-icon {
+  height: 1.3em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.article-text {
+  font-weight: lighter;
+  font-style: italic;
+}

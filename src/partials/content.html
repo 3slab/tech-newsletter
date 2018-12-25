@@ -1,0 +1,26 @@
+<container>
+  <spacer size="16"></spacer>
+
+  <row>
+    <columns>
+      <p class="lead">{{ description }}</p>
+
+      {{#each articles}}
+        <spacer size="10"></spacer>
+        <img class="article-icon" src="{{root}}assets/img/{{ this.type }}.png" /> <a class="article-link" href="{{ this.link }}">{{ this.title }}</a>
+        <p class="article-text">{{ this.description }}</p>
+      {{/each}}
+    </columns>
+  </row>
+
+  <row class="collapsed footer">
+    <columns>
+      <spacer size="10"></spacer>
+      <center>
+        <small class="footer">Vous pouvez <a href="">proposer des liens</a> pour le prochain numéro.
+            N'hésitez pas également à <a href="*|LIST: SUBSCRIBE|*">inviter</a> d'autres personnes.
+            Et surtout ne vous <a href="*|UNSUB|*">désinscrivez</a> jamais.</small>
+      </center>
+    </columns>
+  </row>
+</container>
