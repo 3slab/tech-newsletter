@@ -1,130 +1,101 @@
-# Foundation for Emails Template
+# 3slab Tech Newsletter
 
-[![devDependency Status](https://david-dm.org/zurb/foundation-emails-template/dev-status.svg)](https://david-dm.org/zurb/foundation-emails-template#info=devDependencies)
+Ce projet contient 2 branches :
 
-**Please open all issues with this template on the main [Foundation for Emails](http://github.com/zurb/foundation-emails/issues) repo.**
+* [master](https://github.com/3slab/tech-newsletter) : le code source et les outils pour créer une newsletter
+* [gh-pages](https://github.com/3slab/tech-newsletter/tree/gh-pages) : la version web des newsletters envoyées
 
-This is the official starter project for [Foundation for Emails](http://foundation.zurb.com/emails), a framework for creating responsive HTML devices that work in any email client. It has a Gulp-powered build system with these features:
-
-- Handlebars HTML templates with [Panini](http://github.com/zurb/panini)
-- Simplified HTML email syntax with [Inky](http://github.com/zurb/inky)
-- Sass compilation
-- Image compression
-- Built-in BrowserSync server
-- Full email inlining process
+Les newsletters précédemment envoyées sont visibles sur le site [https://tech-newsletter.3slab.io](https://tech-newsletter.3slab.io) grâce à github pages.
 
 ## Installation
 
-To use this template, your computer needs [Node.js](https://nodejs.org/en/) 0.12 or greater. The template can be installed with the Foundation CLI, or downloaded and set up manually.
+Le système de newsletter utilise foundation :
 
-### Using the CLI
-
-Install the Foundation CLI with this command:
-
-```bash
+```
 npm install foundation-cli --global
 ```
 
-Use this command to set up a blank Foundation for Emails project:
+Installer les dépendances locales au projet :
 
-```bash
-foundation new --framework emails
 ```
-
-The CLI will prompt you to give your project a name. The template will be downloaded into a folder with this name.
-
-### Manual Setup
-
-To manually set up the template, first download it with Git:
-
-```bash
-git clone https://github.com/zurb/foundation-emails-template projectname
-```
-
-Then open the folder in your command line, and install the needed dependencies:
-
-```bash
-cd projectname
 npm install
 ```
 
-## Build Commands
+Lancer le serveur de développement :
 
-Run `npm start` to kick off the build process. A new browser tab will open with a server pointing to your project files.
-
-Run `npm run build` to inline your CSS into your HTML along with the rest of the build process.
-
-Run `npm run litmus` to build as above, then submit to litmus for testing. *AWS S3 Account details required (config.json)*
-
-Run `npm run mail` to build as above, then send to specified email address for testing. *SMTP server details required (config.json)*
-
-Run `npm run zip` to build as above, then zip HTML and images for easy deployment to email marketing services. 
-
-### Speeding Up Your Build
-
-If you create a lot of emails, your build can start to slow down, as each build rebuilds all of the emails in the
-repository. A simple way to keep it fast is to archive emails you no longer need by moving the pages into `src/pages/archive`.
-You can also move images that are no longer needed into `src/assets/img/archive`. The build will ignore pages and images that
-are inside the archive folder.
-
-## Litmus Tests (config.json)
-
-Testing in Litmus requires the images to be hosted publicly. The provided gulp task handles this by automating hosting to an AWS S3 account. Provide your Litmus and AWS S3 account details in the `example.config.json` and then rename to `config.json`. Litmus config, and `aws.url` are required, however if you follow the [aws-sdk suggestions](http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html) you don't need to supply the AWS credentials into this JSON.
-
-```json
-{
-  "aws": {
-    "region": "us-east-1",
-    "accessKeyId": "YOUR_ACCOUNT_KEY",
-    "secretAccessKey": "YOUR_ACCOUNT_SECRET",
-    "params": {
-        "Bucket": "elasticbeanstalk-us-east-1-THIS_IS_JUST_AN_EXAMPLE"
-    },
-    "url": "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-THIS_IS_JUST_AN_EXAMPLE"
-  },
-  "litmus": {
-    "username": "YOUR_LITMUS@EMAIL.com",
-    "password": "YOUR_ACCOUNT_PASSWORD",
-    "url": "https://YOUR_ACCOUNT.litmus.com",
-    "applications": ["ol2003","ol2007","ol2010","ol2011","ol2013","chromegmailnew","chromeyahoo","appmail9","iphone5s","ipad","android4","androidgmailapp"]
-  }
-}
+```
+foundation watch
 ```
 
-## Manual email tests (config.json)
+## Créer une newsletter
 
-Similar to the Litmus tests, you can have the emails sent to a specified email address. Just like with the Litmus tests, you will need to provide AWS S3 account details in `config.json`. You will also need to specify to details of an SMTP server. The email address to send to emails to can either by configured in the `package.json` file or added as a parameter like so: `npm run mail -- --to="example.com"`
+Copier le fichier [src/pages/template.html](https://github.com/3slab/tech-newsletter/blob/master/src/pages/template.html) vers `src/pages/YYYYMMDD_NNN.html` :
 
-```json
-{
-  "aws": {
-    "region": "us-east-1",
-    "accessKeyId": "YOUR_ACCOUNT_KEY",
-    "secretAccessKey": "YOUR_ACCOUNT_SECRET",
-    "params": {
-        "Bucket": "elasticbeanstalk-us-east-1-THIS_IS_JUST_AN_EXAMPLE"
-    },
-    "url": "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-THIS_IS_JUST_AN_EXAMPLE"
-  },
-  "mail": {
-    "to": [
-      "example@domain.com"
-    ],
-    "from": "Company name <info@company.com",
-    "smtp": {
-      "auth": {
-        "user": "example@domain.com",
-        "pass": "12345678"
-      },
-      "host": "smtp.domain.com",
-      "secureConnection": true,
-      "port": 465
-    }
-  }
-}
+* `YYYY` : année d'émission de la newsletter
+* `MM` : mois d'émission de la newsletter
+* `DD` : jour d'émission de la newsletter
+* `NNN` : numéro de la newsletter
+
+Modifier l'entête YAML du fichier :
+
+```
+---
+issue_number: 1
+date: 07/01/2019
+
+description: >
+  Premier numéro de la newsletter tech du 3slab.
+  Cette newsletter (à fréquence variable) proposera une liste de ressources
+  ou d'articles intéressants à destination de l'équipe du lab.
+  Ce numéro contient un certain nombre de ressources incontournables en javascript.
+  Bonne lecture.
+
+articles:
+  - type: php
+    title: titre de l'article
+    link: http://lien-de-l-article
+    description: courte description du contenu de l'article
+---
 ```
 
-For a full list of Litmus' supported test clients(applications) see their [client list](https://litmus.com/emails/clients.xml).
+* `issue_number` : numéro de la newsletter doit correspondre au nom du fichier `NNN`
+* `date` : date d'envoi de la newsletter doit correspondre au nom du fichier `YYYYMMDD`
+* `description` : courte description pour expliquer le contenu de la newsletter ou mettre en avant une ressource
+* `articles` : liste des articles de la newsletter. Voir le chapitre [proposer un article](https://github.com/3slab/tech-newsletter#proposer-un-article)
 
-**Caution:** AWS Service Fees will result, however, are usually very low do to minimal traffic. Use at your own discretion.
+Ajouter une entrée au menu du fichier [src/pages/index.html](https://github.com/3slab/tech-newsletter/blob/master/src/pages/index.html) :
 
+```
+<item href="{{root}}YYYYMMDD_NNN.html" target="_blank">DD/MM/YYYY - n°NNN</item>
+```
+
+## Proposer un article
+
+Ajouter une entrée dans le fichier [src/pages/next-release.html](https://github.com/3slab/tech-newsletter/blob/master/src/pages/next-release.html) dans le header YAML à la clé `articles` :
+
+```
+articles:
+  - type: php
+    title: titre de l'article
+    link: http://lien-de-l-article
+    description: courte description du contenu de l'article
+```
+
+* `type` : type d'article, contrôle l'icône qui préfixera le titre de l'article (correspond au nom d'un fichier png dans le dossier [src/assets/img](https://github.com/3slab/tech-newsletter/tree/master/src/assets/img). Valeurs possibles : career, devops, docker, javascript, php)
+* `title` : titre de l'article
+* `link` : lien vers l'article
+* `description` : description courte du contenu de l'article
+
+Faire une pull request avec votre ou vos propositions.
+
+## Déployer la newsletter
+
+Suivre la documentation [Créer une newsletter](https://github.com/3slab/tech-newsletter#creer-une-newsletter) à partir du fichier [src/pages/next-release.html](https://github.com/3slab/tech-newsletter/blob/master/src/pages/next-release.html).
+
+Commiter et pusher.
+
+Lancer le script `deploy.sh`.
+
+Utiliser le fichier HTML généré dans `dist` pour créer votre campagne sur [mailchimp](https://mailchimp.com)
+
+*Powered by [zurb](https://mailchimp.com)*
