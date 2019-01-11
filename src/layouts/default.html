@@ -14,6 +14,9 @@
       <tr>
         <td class="center" align="center" valign="top">
           <center>
+            {{#isNotEmpty issue_number}}
+              <a href="{{#linkToWeb issue_number date}}{{/linkToWeb}}">Voir dans le navigateur</a>
+            {{/isNotEmpty}}
             <wrapper class="header">
               <container>
                 <row class="collapse">
