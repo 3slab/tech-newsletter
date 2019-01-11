@@ -329,7 +329,8 @@ a {
 .article-icon {
   height: 1.3em;
   display: inline-block;
-  vertical-align: middle; }
+  vertical-align: middle;
+  padding-right: 0.5em; }
 
 .article-text {
   font-weight: lighter;
