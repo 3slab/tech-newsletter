@@ -7,7 +7,7 @@
 
       {{#each articles}}
         <spacer size="16"></spacer>
-        <img class="article-icon" src="{{root}}assets/img/{{ this.type }}.png" /> <a class="article-link" href="{{ this.link }}">{{ this.title }}</a>
+        <img class="article-icon" src="{{root}}assets/img/{{ this.type }}.png" width="20" /> <a class="article-link" href="{{ this.link }}">{{ this.title }}</a>
         <p class="article-text">{{ this.description }}</p>
       {{/each}}
     </columns>
