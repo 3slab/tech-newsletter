@@ -6,3 +6,6 @@ dist
 .sass-cache
 .awspublish*
 config.json
+list.csv
+test.csv
+sendgrid.env
