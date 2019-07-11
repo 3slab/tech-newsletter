@@ -96,6 +96,17 @@ Commiter et pusher.
 
 Lancer le script `deploy.sh`.
 
-Utiliser le fichier HTML généré dans `dist` pour créer votre campagne sur [mailchimp](https://mailchimp.com)
+## Envoyer la newsletter
+
+Créer une variable d'environnement globale `SENDGRID_API_KEY`.
+
+Créer un fichier CSV à 3 colonnes : `email, prénom, nom` indiquant les destinataires
+
+Lancer la commande `send.sh list.csv dist/20190711_004.html` avec :
+
+* 1er paramètre : le fichier csv des destinataires
+* 2ème paramètre : le chemin vers le fichier html du mail
+
+**IMPORTANT : la newsletter doit être déployée sur github pages avant**
 
 *Powered by [zurb](https://mailchimp.com)*
