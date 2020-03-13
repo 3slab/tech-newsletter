@@ -98,14 +98,11 @@ Lancer le script `deploy.sh`.
 
 ## Envoyer la newsletter
 
-Créer une variable d'environnement globale `SENDGRID_API_KEY`.
+Nous utilisons un compte sendgrid avec le module marketing activé.
 
-Créer un fichier CSV à 3 colonnes : `email, prénom, nom` indiquant les destinataires
+Lancer le script `deploy-sendgrid.sh`.
 
-Lancer la commande `send.sh list.csv dist/20190711_004.html` avec :
-
-* 1er paramètre : le fichier csv des destinataires
-* 2ème paramètre : le chemin vers le fichier html du mail
+Copier le contenu du fichier dist html généré (ex: `dist/20190711_004.html`) et créer un envoi sendgrid sur le compte 3slab en s'inspirant d'une campagne précédente.
 
 **IMPORTANT : la newsletter doit être déployée sur github pages avant**
 
