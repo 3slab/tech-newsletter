@@ -5,6 +5,7 @@ now=$(date)
 ./node_modules/.bin/gulp build --production
 
 sed -i 's#assets/img/career.png#https://cdn.mcauto-images-production.sendgrid.net/9da0e7b770003246/d54c12f3-d9cb-44d6-9c0e-f6eb48010057/128x128.png#g' dist/*.html
+sed -i 's#assets/img/cloud.png#http://cdn.mcauto-images-production.sendgrid.net/9da0e7b770003246/f0593b04-4bae-493b-8cbf-a64aff240666/128x128.png#g' dist/*.html
 sed -i 's#assets/img/code.png#https://cdn.mcauto-images-production.sendgrid.net/9da0e7b770003246/2bb46876-88f4-4af5-8895-ad01e4f78da2/128x128.png#g' dist/*.html
 sed -i 's#assets/img/concevoir.png#https://cdn.mcauto-images-production.sendgrid.net/9da0e7b770003246/84ced697-0aa6-433e-82ee-d6f7477a5b51/545x533.png#g' dist/*.html
 sed -i 's#assets/img/connaitre.png#https://cdn.mcauto-images-production.sendgrid.net/9da0e7b770003246/d3afe7c7-dd71-47fe-87c0-5c70a75c9b11/546x496.png#g' dist/*.html
