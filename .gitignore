@@ -9,3 +9,4 @@ config.json
 list.csv
 test.csv
 sendgrid.env
+.idea
